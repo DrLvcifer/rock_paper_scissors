@@ -1,0 +1,49 @@
+@layer root {
+   :root {
+      --rpc_dark: #131314;
+      --rpc_mid_dark: #1b1b1b;
+      --rpc_light_dark: #282a2c;
+
+      --rpc_dim_accent: #33326a;
+      --rpc_light_accent: #beb2fc;
+
+      --rpc_light: #e3e3e3;
+   }
+}
+
+body {
+   background-color: var(--rpc_dark);
+}
+
+#titles-sec {
+   text-align: center;
+   margin-top: 3%;
+}
+
+#main-title {
+   color: var(--rpc_light);
+   font-family: "New Rocker", system-ui;
+   font-weight: 400;
+   font-style: normal;
+   text-align: center;
+}
+
+#sub-title {
+   color: var(--rpc_light_accent);
+   font-family: "Grenze", serif;
+   font-optical-sizing: auto;
+   font-weight: 400;
+}
+
+main {
+   margin-top: 3%;
+}
+
+#cpu-screen {
+   width: 300px;
+   height: 300px;
+   background: var(--rpc_light_dark);
+   margin: 0 auto;
+   border-radius: 10px;
+   border: 1px solid var(--rpc_dim_accent);
+}
