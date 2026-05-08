@@ -20,6 +20,9 @@
          </section>
       </header>
       <main>
+         <!-- ==========================================
+         COMPUTER SECTION
+         =========================================== -->
          <section id="cpu-section">
             <div id="cpu-screen">
                <div id="scene">
@@ -29,12 +32,26 @@
                   />
                </div>
             </div>
+
+            <!-- ==========================================
+         SCORE BOARD
+         =========================================== -->
             <div id="score-board">
-               <div id="hum-side"></div>
-               <div id="cpu-side"></div>
+               <div id="human-side">
+                  <h1 id="player-name">HUM:</h1>
+                  <h1 class="scores" id="human-score">0</h1>
+               </div>
+               <div id="score-separator">|</div>
+               <div id="cpu-side">
+                  <h1 class="scores" id="cpu-score">0</h1>
+                  <h1 id="cpu-name">:CPU</h1>
+               </div>
             </div>
          </section>
-         <section id="hum-section">
+         <!-- ==========================================
+         HUMAN SECTION
+         =========================================== -->
+         <section id="human-section">
             <h2 id="sub-title">Choose Your Hand!</h2>
 
             <div id="selection-wrapper">
@@ -44,7 +61,7 @@
                <div class="sign-box" id="paper-container">
                   <img src="/icons/paper.svg" alt="paper-hand-sign" />
                </div>
-               <div class="sign-box" id="scissors-id">
+               <div class="sign-box" id="scissors-container">
                   <img src="/icons/scissors.svg" alt="scissors-hand-sign" />
                </div>
             </div>
