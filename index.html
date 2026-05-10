@@ -4,8 +4,7 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Play Rock, Paper, Scissors</title>
-      <link rel="stylesheet" href="/styles/style.css" />
-      <script src="/scripts/script.js" defer></script>
+      <link rel="stylesheet" href="styles/style.css" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
@@ -20,26 +19,20 @@
          </section>
       </header>
       <main>
-         <!-- ==========================================
-         COMPUTER SECTION
-         =========================================== -->
          <section id="cpu-section">
             <div id="cpu-screen">
                <div id="scene">
                   <img
-                     src="/icons/rock-paper-scissors.png"
+                     src="icons/rock-paper-scissors.png"
                      alt="rock_paper_scissor"
                   />
                </div>
             </div>
 
-            <!-- ==========================================
-         SCORE BOARD
-         =========================================== -->
             <div id="score-board">
-               <div id="human-side">
-                  <h1 id="player-name">HUM:</h1>
-                  <h1 class="scores" id="human-score">0</h1>
+               <div id="player-side">
+                  <h1 id="player-name">YOU:</h1>
+                  <h1 class="scores" id="player-score">0</h1>
                </div>
                <div id="score-separator">|</div>
                <div id="cpu-side">
@@ -48,24 +41,24 @@
                </div>
             </div>
          </section>
-         <!-- ==========================================
-         HUMAN SECTION
-         =========================================== -->
-         <section id="human-section">
+
+         <section id="player-section">
             <h2 id="sub-title">Choose Your Hand!</h2>
+            <button id="reset-btn" class="is-hidden">Play Again</button>
 
             <div id="selection-wrapper">
                <div class="sign-box" id="rock-container">
-                  <img src="/icons/rock.svg" alt="rock-hand-sign" />
+                  <img src="icons/rock.svg" alt="rock-hand-sign" />
                </div>
                <div class="sign-box" id="paper-container">
-                  <img src="/icons/paper.svg" alt="paper-hand-sign" />
+                  <img src="icons/paper.svg" alt="paper-hand-sign" />
                </div>
                <div class="sign-box" id="scissors-container">
-                  <img src="/icons/scissors.svg" alt="scissors-hand-sign" />
+                  <img src="icons/scissors.svg" alt="scissors-hand-sign" />
                </div>
             </div>
          </section>
       </main>
+      <script src="scripts/script.js"></script>
    </body>
 </html>

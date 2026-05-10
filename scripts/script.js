@@ -1,88 +1,61 @@
-let humanScoreCount = 0;
-let cpuScoreCount = 0;
+let playerScore = 0;
+let cpuScore = 0;
 
-/*_________________________________
-+++++++++++++++++++++++++++++++++++
-    THE HUMAN LOGIC
-+++++++++++++++++++++++++++++++++++
----------------------------------*/
+const roundCall = document.getElementById("sub-title");
+const livePlayerScore = document.getElementById("player-score");
+const liveCpuScore = document.getElementById("cpu-score");
+const resetBtn = document.getElementById("reset-btn");
 
-const rockChoice = document.getElementById("rock-container");
-const paperChoice = document.getElementById("paper-container");
-const scissorsChoice = document.getElementById("scissors-container");
-
-function getHumanChoice() {
-   rockChoice.addEventListener("click", (e) => {
-      return "rock";
-   });
-
-   paperChoice.addEventListener("click", (e) => {
-      return "paper";
-   });
-
-   scissorsChoice.addEventListener("click", (e) => {
-      return "scissors";
-   });
-}
-
-/*_________________________________
-+++++++++++++++++++++++++++++++++++
-    THE CPU LOGIC
-+++++++++++++++++++++++++++++++++++
----------------------------------*/
+console.log("reset-btn found:", resetBtn);
 
 function getCpuChoice() {
    const choices = ["rock", "paper", "scissors"];
-
-   let cpuChoice = choices[Math.floor(Math.random() * choices.length)];
-
-   return cpuChoice;
+   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function getResult(getHumanChoice, getCpuChoice) {
-   if (getHumanChoice === getCpuChoice) {
-      return "tie";
+function playRound(human, cpu) {
+   if (playerScore >= 5 || cpuScore >= 5) return;
+
+   if (human === cpu) {
+      roundCall.textContent = "It's a Tie!";
    } else if (
-      (getHumanChoice === "rock" && getCpuChoice === "scissors") ||
-      (getHumanChoice === "paper" && getCpuChoice === "rock") ||
-      (getHumanChoice === "scissors" && getCpuChoice === "paper")
+      (human === "rock" && cpu === "scissors") ||
+      (human === "paper" && cpu === "rock") ||
+      (human === "scissors" && cpu === "paper")
    ) {
-      return "win";
+      playerScore++;
+      livePlayerScore.textContent = playerScore;
+      roundCall.textContent = `${human.toUpperCase()} beats ${cpu.toUpperCase()}, You Win!`;
    } else {
-      return "lose";
+      cpuScore++;
+      liveCpuScore.textContent = cpuScore;
+      roundCall.textContent = `${cpu.toUpperCase()} beats ${human.toUpperCase()}, You Lose!`;
+   }
+
+   if (playerScore === 5) {
+      roundCall.textContent = "🏆 You win the game! GAME OVER!";
+      resetBtn.classList.remove("is-hidden");
+   } else if (cpuScore === 5) {
+      roundCall.textContent = "🤖 CPU wins the game! GAME OVER!";
+      resetBtn.classList.remove("is-hidden");
    }
 }
 
-console.log(getResult());
+document
+   .getElementById("rock-container")
+   .addEventListener("click", () => playRound("rock", getCpuChoice()));
+document
+   .getElementById("paper-container")
+   .addEventListener("click", () => playRound("paper", getCpuChoice()));
+document
+   .getElementById("scissors-container")
+   .addEventListener("click", () => playRound("scissors", getCpuChoice()));
 
-/*_________________________________
-+++++++++++++++++++++++++++++++++++
-    Game Dealer
-+++++++++++++++++++++++++++++++++++
----------------------------------*/
-
-function playGame(getResult) {
-   const humanScore = document.getElementById("human-score");
-   const cpuScore = document.getElementById("cpu-score");
-   const scoreCall = document.createElement("h2");
-   const scoreBoard = document.getElementById("score-board");
-
-   for (let i = 0; i < 5; i++) {
-      if (getResult === 1) {
-         scoreCall.textContent = "Tie!";
-         scoreBoard.appendChild(scoreCall);
-      } else if (getResult === 2) {
-         scoreCall.textContent = `${getHumanChoice} beats ${getCpuChoice} Your Hand Win!`;
-         scoreBoard.appendChild(scoreCall);
-         humanScore.textContent = +1;
-      } else {
-         scoreCall.textContent = `${getCpuChoice} beats ${getHumanChoice} Your Hand Lose!`;
-         scoreBoard.appendChild(scoreCall);
-         cpuScore.textContent = +1;
-      }
-
-      if (i === 5) {
-         return 0;
-      }
-   }
-}
+resetBtn.addEventListener("click", () => {
+   playerScore = 0;
+   cpuScore = 0;
+   livePlayerScore.textContent = "0";
+   liveCpuScore.textContent = "0";
+   roundCall.textContent = "Choose your weapon to start!";
+   resetBtn.classList.add("is-hidden");
+});

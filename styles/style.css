@@ -2,11 +2,9 @@
    :root {
       --rpc_dark: #131314;
       --rpc_mid_dark: #1b1b1b;
-      --rpc_light_dark: #282a2c;
-
+      --rpc_light_dark: hsl(210, 64%, 40%);
       --rpc_dim_accent: #33326a;
       --rpc_light_accent: #beb2fc;
-
       --rpc_light: #e3e3e3;
    }
 }
@@ -29,7 +27,7 @@ body {
 }
 
 main {
-   margin-top: 3%;
+   margin-top: 2%;
 }
 
 #cpu-screen {
@@ -72,7 +70,6 @@ main {
 
 .scores {
    color: var(--rpc_light);
-
    font-family: "New Rocker", system-ui;
    font-weight: bolder;
 }
@@ -83,7 +80,7 @@ main {
    font-family: "New Rocker", system-ui;
 }
 
-#human-side {
+#player-side {
    flex: 1;
    display: flex;
    align-items: center;
@@ -91,9 +88,8 @@ main {
    gap: 8px;
 }
 
-#human-score {
+#player-score {
    font-size: 70px;
-   padding-left: 40%;
 }
 
 #cpu-side {
@@ -106,7 +102,6 @@ main {
 
 #cpu-score {
    font-size: 70px;
-   padding-right: 45%;
 }
 
 #sub-title {
@@ -115,7 +110,24 @@ main {
    font-optical-sizing: auto;
    font-weight: 400;
    text-align: center;
-   margin: 2% 0 2%;
+   margin: 1% 0;
+}
+
+#reset-btn {
+   display: block;
+   margin: 1% auto;
+   padding: 0.5% 1.5%;
+   font-family: "New Rocker", system-ui;
+   font-size: 1.5rem;
+   border-radius: 20px;
+   background-color: var(--rpc_dim_accent);
+   color: var(--rpc_light);
+   border: 1px solid var(--rpc_light_accent);
+   cursor: pointer;
+}
+
+#reset-btn.is-hidden {
+   display: none;
 }
 
 #selection-wrapper {
@@ -128,6 +140,15 @@ main {
 
 .sign-box {
    background-color: var(--rpc_dim_accent);
+   border-radius: 15px;
+   border: 1px solid var(--rpc_light_accent);
+   transition: all 0.3s ease-out;
+   cursor: pointer;
+}
+
+.sign-box:hover {
+   background-color: var(--rpc_light_accent);
+   transform: scale(1.1);
    border-radius: 15px;
    border: 1px solid var(--rpc_light_accent);
 }
